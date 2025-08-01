@@ -1,0 +1,294 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* CSS Custom Properties for theming */
+:root {
+  --background: 250 250 246; /* Off white */
+  --foreground: 39 39 42; /* Dark gray */
+  --card: 255 255 255;
+  --card-foreground: 39 39 42;
+  --popover: 255 255 255;
+  --popover-foreground: 39 39 42;
+  --primary: 107 192 22; /* Pista green */
+  --primary-foreground: 255 255 255;
+  --secondary: 250 250 246; /* Off white */
+  --secondary-foreground: 39 39 42;
+  --muted: 245 245 245;
+  --muted-foreground: 113 113 122;
+  --accent: 255 215 0; /* Golden */
+  --accent-foreground: 39 39 42;
+  --destructive: 239 68 68;
+  --destructive-foreground: 255 255 255;
+  --border: 229 229 229;
+  --input: 229 229 229;
+  --ring: 107 192 22; /* Pista green */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 39 39 42;
+  --foreground: 250 250 246;
+  --card: 39 39 42;
+  --card-foreground: 250 250 246;
+  --popover: 39 39 42;
+  --popover-foreground: 250 250 246;
+  --primary: 107 192 22;
+  --primary-foreground: 255 255 255;
+  --secondary: 63 63 70;
+  --secondary-foreground: 250 250 246;
+  --muted: 63 63 70;
+  --muted-foreground: 161 161 170;
+  --accent: 255 215 0;
+  --accent-foreground: 39 39 42;
+  --destructive: 127 29 29;
+  --destructive-foreground: 250 250 246;
+  --border: 63 63 70;
+  --input: 63 63 70;
+  --ring: 107 192 22;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Mapbox overrides */
+.mapboxgl-popup-content {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+  max-width: 300px;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: hsl(var(--card));
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: hsl(var(--card));
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: hsl(var(--card));
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: hsl(var(--card));
+}
+
+/* VR/AR Styles */
+a-scene {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.vr-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.ar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.ar-info-panel {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  padding: 1rem;
+  max-width: 300px;
+  pointer-events: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Photo guide animations */
+.photo-guide-card {
+  transition: all 0.3s ease;
+}
+
+.photo-guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(107, 192, 22, 0.2);
+}
+
+/* Influencer-style animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Loading animations */
+.skeleton {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, transparent 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Glass morphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Interactive map styles */
+.destination-marker {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.destination-marker:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(107, 192, 22, 0.4);
+}
+
+/* AI chat styles */
+.ai-chat-bubble {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  max-width: 80%;
+  animation: slideUp 0.3s ease-out;
+}
+
+.user-chat-bubble {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  padding: 0.75rem 1rem;
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  max-width: 80%;
+  margin-left: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mapboxgl-popup-content {
+    max-width: 250px;
+    padding: 0.75rem;
+  }
+  
+  .destination-marker {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .ai-chat-bubble,
+  .user-chat-bubble {
+    max-width: 90%;
+    font-size: 0.9rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 0 0 0;
+    --ring: 0 0 0;
+  }
+  
+  .destination-marker {
+    border-width: 4px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
