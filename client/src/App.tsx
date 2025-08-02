@@ -14,6 +14,7 @@ import AIPlanner from '@/pages/AIPlanner';
 import VRExperience from '@/pages/VRExperience';
 import ARView from '@/pages/ARView';
 import Analytics from '@/pages/Analytics';
+import DemoCenter from '@/pages/DemoCenter';
 import NotFound from '@/pages/NotFound';
 
 const queryClient = new QueryClient({
@@ -47,6 +48,7 @@ export default function App() {
                 <Route path="/ar/:destinationId" component={ARView} />
                 <Route path="/ar" component={ARView} />
                 <Route path="/analytics" component={Analytics} />
+                <Route path="/demo" component={DemoCenter} />
                 <Route component={NotFound} />
               </Switch>
             </main>
