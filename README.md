@@ -1,5 +1,6 @@
 
 # TravelVerse - AI-Powered Global Destination Guide
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An advanced full-stack travel platform featuring cutting-edge AI/ML technologies, IoT integration, and immersive experiences for modern travelers.
 
